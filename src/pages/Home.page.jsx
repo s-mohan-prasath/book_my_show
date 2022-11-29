@@ -14,6 +14,7 @@ const HomePage = () => {
       <HeroCarousel />
       <div className="container mx-auto px-2 md:px-12 my-8">
         <h1 className="text-2xl font-bold ">The best of Entertainment</h1>
+        <br/>
         <EntertainmentCardSlider />
         <div className="container mx-auto">
           <PosterSlider
