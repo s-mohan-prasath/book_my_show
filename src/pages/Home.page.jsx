@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const HomePage = () => {
+  
   const [recommendedMovies, setRecommendedMovies] = useState([]);
   const [premierMovies, setPremierMovies] = useState([]);
   const [onlineStreamEvents, setOnlineStreamEvents] = useState([]);
@@ -15,31 +16,31 @@ const HomePage = () => {
 useEffect(() =>{
   const requestTopRatedMovies = async() =>{
     const getTopRatedMovies =await axios.get(
-      "https://api.themoviedb.org/3/movie/top_rated?api_key=24397a139df67de4ef51171a356d7fa9"
+      "/movie/top_rated"
     );
     setRecommendedMovies(getTopRatedMovies.data.results)
     console.log(recommendedMovies)
   }
   requestTopRatedMovies()
-})
+},[])
 useEffect(() =>{
   const requestPremierMovies = async() =>{
     const getPremierMovies =await axios.get(
-      "https://api.themoviedb.org/3/movie/popular?api_key=24397a139df67de4ef51171a356d7fa9"
+      "/movie/popular"
     );
     setPremierMovies(getPremierMovies.data.results)
   }
   requestPremierMovies()
-})
+},[])
 useEffect(() =>{
   const requestUpComingMovies = async() =>{
     const getUpComingMovies =await axios.get(
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=24397a139df67de4ef51171a356d7fa9"
+      "/movie/upcoming"
     );
     setOnlineStreamEvents(getUpComingMovies.data.results)
   }
   requestUpComingMovies()
-})
+},[])
   // [] means empty dependency, it will run only once while loading components
 
   return (
