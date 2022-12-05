@@ -7,13 +7,12 @@ import MovieCarousel from "../components/HeroCarousel/MovieCarousel.component";
 //icons
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 
-//Components
-// import Cast from "../components/Cast/Cast.Component";
 import PosterSlider from "../components/PosterSlider/PosterSlider.component";
 
 //Context
 import { MovieContext } from "../Context/Movie.context";
 import MovieNavbar from "../components/Navbar/MovieNavbar.component";
+import Cast from "../components/Cast/Cast.Component";
 
 const MoviePage = () => {
     const { movie, setMovie } = useContext(MovieContext);
@@ -71,7 +70,7 @@ const MoviePage = () => {
             {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 5,
+                    slidesToShow: 3,
                     slidesToScroll: 2,
                     initialSlide: 2,
                 },
@@ -85,7 +84,6 @@ const MoviePage = () => {
             },
         ],
     };
-
     const settings = {
         infinite: false,
         speed: 500,
@@ -130,11 +128,9 @@ const MoviePage = () => {
                     </h1>
                     <p>{movie.overview}</p>
                 </div>
-
                 <div className="my-8">
                     <hr />
                 </div>
-
                 <div className="my-8">
                     <h2 className="text-gray-800 font-bold text-2xl mb-3">
                         Applicable Offers
@@ -174,26 +170,21 @@ const MoviePage = () => {
                 <div className="my-8">
                     <hr />
                 </div>
+                {/* Cast Slider */}
 
-                {/* <div className="my-8">
-                    <h2 className="text-gray-800 font-bold text-2xl mb-4">
-                        Cast and Crew
-                    </h2>
-                    <Slider {...settingsCast}>
-                        {cast.map((castData) => (
-                            <Cast
-                                image={castData.profile_path}
-                                castName={castData.original_name}
-                                role={castData.character}
-                            />
-                        ))}
-                    </Slider>
-                </div> */}
-
+                <div className="container">
+                    <h1 className="text-gray-900 text-2xl font-bold">Cast and Crew</h1>
+                    <div>
+                        <Slider {...settingsCast}>
+                            {cast.map((castData) =>{
+                                return (<Cast src={castData.profile_path} name={castData.original_name} role={castData.character}/>)
+                            })}
+                        </Slider>
+                    </div>
+                </div>
                 <div className="my-8">
                     <hr />
                 </div>
-
                 <div className="my-8">
                     <PosterSlider
                         config={settings}
@@ -202,11 +193,9 @@ const MoviePage = () => {
                         isDark={false}
                     />
                 </div>
-
                 <div className="my-8">
                     <hr />
                 </div>
-
                 <div className="my-8">
                     <PosterSlider
                         config={settings}
